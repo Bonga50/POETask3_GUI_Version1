@@ -35,7 +35,7 @@
         <!--Title -->
         <TextBlock Grid.Column="1" Grid.Row="1" Text="Buget Planner" Margin="10" FontSize="20"/>
         <!--error text -->
-        <TextBlock x:Name="lblError" Grid.Column="2" Grid.Row="1" Text="ERROR" FontSize="14" Margin="45,15,0,0"/>
+        <TextBlock x:Name="lblError" Grid.Column="2" Grid.Row="1" Text="Input ERROR" FontSize="14" Margin="30,15,0,0"/>
         <!-- Gross Income -->
         <TextBlock Grid.Column="1" Grid.Row="2" Text="Gross Income" Margin="15,5,0,10" FontSize="16"  />
         <TextBox x:Name="txtGross" Grid.Column="2" Grid.Row="2" Text="" Width="150" Margin="5"/>
