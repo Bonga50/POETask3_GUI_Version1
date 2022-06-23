@@ -20,45 +20,22 @@ namespace POETask3_2
         private void btnExpenseCal_Click(object sender, RoutedEventArgs e)
         {
 
-            lblError.Visibility = Visibility.Collapsed;
+           lblError.Visibility = Visibility.Collapsed;
+            //[2](Sort list in descending order in C# | Techie Delight, 2022)
+            //the below method sorts the list in decending order using Linq
+            List<Expensedata> sorted = LoadExpenseData().OrderByDescending(x => x.Amount).ToList();
+
+            // dataExpense.ItemsSource = sorted;
+            dataUserIncome.ItemsSource = LoadUserIncomeData();
+            dataExpense.ItemsSource = sorted;
+
+        }
+        //this method loads the list of expenses
+        //[1](Chand, n.d.)
+        private List<Expensedata> LoadExpenseData()
+        {
             //list initalize for expenses [1](Chand, n.d.)
             List<Expensedata> Expenses = new List<Expensedata>();
-
-            //Gross income and tax 
-            List<Expensedata> UserIncome = new List<Expensedata>();
-            try
-            {
-                UserIncome.Add(new Expensedata()
-                {
-                    Expense = "Gross Income",
-                    Amount = double.Parse(txtGross.Text)
-                });
-                UserIncome.Add(new Expensedata()
-                {
-                    Expense = "Tax",
-                    Amount = double.Parse(txtTax.Text)
-                });
-                //total of all expenses
-                UserIncome.Add(new Expensedata()
-                {
-                    Expense ="Total Expenses",
-                    Amount = 
-                    Double.Parse(txtGrocery.Text)+
-                    Double.Parse(txtWater.Text)+
-                    Double.Parse(txtTravel.Text)+
-                    Double.Parse(txtCellPhone.Text)+
-                    Double.Parse(txtOther.Text)
-
-                });
-
-
-            }
-            catch (Exception)
-            {
-
-                lblError.Visibility = Visibility.Visible;
-            }
-
 
             try
             {
@@ -104,25 +81,51 @@ namespace POETask3_2
                 lblError.Visibility = Visibility.Visible;
             }
 
+            return Expenses;
+
+        }
+        //User income data such as total income , and expenses or tax
+        private List<Expensedata> LoadUserIncomeData() {
+            //Gross income and tax 
+            List<Expensedata> UserIncome = new List<Expensedata>();
+
+            try
+            {
+                UserIncome.Add(new Expensedata()
+                {
+                    Expense = "Gross Income",
+                    Amount = double.Parse(txtGross.Text)
+                });
+                UserIncome.Add(new Expensedata()
+                {
+                    Expense = "Tax",
+                    Amount = double.Parse(txtTax.Text)
+                });
+                //total of all expenses
+                UserIncome.Add(new Expensedata()
+                {
+                    Expense = "Total Expenses",
+                    Amount =
+                    Double.Parse(txtGrocery.Text) +
+                    Double.Parse(txtWater.Text) +
+                    Double.Parse(txtTravel.Text) +
+                    Double.Parse(txtCellPhone.Text) +
+                    Double.Parse(txtOther.Text)
+
+                });
 
 
-           
+            }
+            catch (Exception)
+            {
 
-
-            //[2](Sort list in descending order in C# | Techie Delight, 2022)
-            //the below method sorts the list in decending order using Linq
-            List<Expensedata> sorted = Expenses.OrderByDescending(x => x.Amount).ToList();
-            
-            dataExpense.ItemsSource = sorted;
-            dataUserIncome.ItemsSource = UserIncome;
-
-
+                lblError.Visibility = Visibility.Visible;
+            }
+            return UserIncome;
         }
 
 
     }
-
-   
 
     class Expensedata
     {
