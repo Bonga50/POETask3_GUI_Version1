@@ -19,9 +19,44 @@ namespace POETask3_2
 
         private void btnExpenseCal_Click(object sender, RoutedEventArgs e)
         {
+
             lblError.Visibility = Visibility.Collapsed;
-            //list initalize [1](Chand, n.d.)
+            //list initalize for expenses [1](Chand, n.d.)
             List<Expensedata> Expenses = new List<Expensedata>();
+
+            //Gross income and tax 
+            List<Expensedata> UserIncome = new List<Expensedata>();
+            try
+            {
+                UserIncome.Add(new Expensedata()
+                {
+                    Expense = "Gross Income",
+                    Amount = double.Parse(txtGross.Text)
+                });
+                UserIncome.Add(new Expensedata()
+                {
+                    Expense = "Tax",
+                    Amount = double.Parse(txtTax.Text)
+                });
+                UserIncome.Add(new Expensedata()
+                {
+                    Expense ="Total Expenses",
+                    Amount = 
+                    Double.Parse(txtGrocery.Text)+
+                    Double.Parse(txtWater.Text)+
+                    Double.Parse(txtTravel.Text)+
+                    Double.Parse(txtCellPhone.Text)+
+                    Double.Parse(txtOther.Text)
+
+                });
+
+
+            }
+            catch (Exception)
+            {
+
+                lblError.Visibility = Visibility.Visible;
+            }
 
 
             try
@@ -51,7 +86,6 @@ namespace POETask3_2
                     Amount = Double.Parse(txtCellPhone.Text)
 
                 });
-
                 Expenses.Add(new Expensedata()
                 {
                     Expense = "Other expenses",
@@ -86,15 +120,17 @@ namespace POETask3_2
             //[2](Sort list in descending order in C# | Techie Delight, 2022)
             //the below method sorts the list in decending order using Linq
             List<Expensedata> sorted = Expenses.OrderByDescending(x => x.Amount).ToList();
+            
             dataExpense.ItemsSource = sorted;
-
-
+            dataUserIncome.ItemsSource = UserIncome;
 
 
         }
 
 
     }
+
+   
 
     class Expensedata
     {

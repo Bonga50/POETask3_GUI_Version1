@@ -61,13 +61,21 @@
         <TextBox x:Name="txtOther" Grid.Column="2" Grid.Row="9" Text="" Width="150" Margin="5"/>
         <!--Button to calculate-->
         <Button x:Name="btnExpenseCal"  Grid.Column="2" Grid.Row="10"  Content="Calculate" Margin="20,5,20,5" Height="20" VerticalAlignment="Top" Click="btnExpenseCal_Click"/>
-        <!--Data table-->
+        <!--Data table for expenses-->
         <DataGrid x:Name="dataExpense" Grid.Row="1" Grid.Column="5" Grid.RowSpan="4" AutoGenerateColumns="False" Width="300" >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Expense" Width ="150" Binding ="{Binding Path = Expense}" />
                 <DataGridTextColumn Header="Amount" Width ="150" Binding="{Binding Path = Amount}" />
             </DataGrid.Columns>
            
+        </DataGrid>
+        <!--Data table for userIncomeItems-->
+        <DataGrid x:Name="dataUserIncome" Grid.Row="6" Grid.Column="5" Grid.RowSpan="3" AutoGenerateColumns="False" Width="300" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Income Item" Width ="150" Binding ="{Binding Path = Expense}" />
+                <DataGridTextColumn Header="Amount" Width ="150" Binding="{Binding Path = Amount}" />
+            </DataGrid.Columns>
+
         </DataGrid>
         <!--Button to next page-->
         <Button x:Name="btnNext" Grid.Column="5" Grid.Row="10" Content="Next" Margin="300,5,5,5"/>
