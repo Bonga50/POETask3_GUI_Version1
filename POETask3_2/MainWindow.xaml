@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:POETask3_2"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" >
     <Grid x:Name="lblGross">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20"/>
@@ -35,7 +35,7 @@
         <!--Title -->
         <TextBlock Grid.Column="1" Grid.Row="1" Text="Buget Planner" Margin="10" FontSize="20"/>
         <!--error text -->
-        <TextBlock x:Name="lblError" Grid.Column="2" Grid.Row="1" Text="Input ERROR" FontSize="14" Margin="30,15,0,0"/>
+        <TextBlock x:Name="lblError" Foreground="Red" Grid.Column="2" Grid.Row="1" Text="ERROR" FontSize="14" Margin="45,15,0,0"/>
         <!-- Gross Income -->
         <TextBlock Grid.Column="1" Grid.Row="2" Text="Gross Income" Margin="15,5,0,10" FontSize="16"  />
         <TextBox x:Name="txtGross" Grid.Column="2" Grid.Row="2" Text="" Width="150" Margin="5"/>
@@ -60,7 +60,7 @@
         <TextBlock Grid.Column="1" Grid.Row="9" Text="Other expenses" Margin="15,5,0,10" FontSize="16"/>
         <TextBox x:Name="txtOther" Grid.Column="2" Grid.Row="9" Text="" Width="150" Margin="5"/>
         <!--Button to calculate-->
-        <Button x:Name="btnExpenseCal"  Grid.Column="2" Grid.Row="10"  Content="Calculate" Margin="5,5,5,0" Height="20" VerticalAlignment="Top" Click="btnExpenseCal_Click"/>
+        <Button x:Name="btnExpenseCal"  Grid.Column="2" Grid.Row="10"  Content="Calculate" Margin="20,5,20,5" Height="20" VerticalAlignment="Top" Click="btnExpenseCal_Click"/>
         <!--Data table-->
         <DataGrid x:Name="dataExpense" Grid.Row="1" Grid.Column="5" Grid.RowSpan="4" AutoGenerateColumns="False" Width="300" >
             <DataGrid.Columns>
@@ -69,6 +69,8 @@
             </DataGrid.Columns>
            
         </DataGrid>
+        <!--Button to next page-->
+        <Button x:Name="btnNext" Grid.Column="5" Grid.Row="10" Content="Next" Margin="300,5,5,5"/>
 
     </Grid>
 </Window>

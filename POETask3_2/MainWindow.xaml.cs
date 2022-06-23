@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Linq;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 
 namespace POETask3_2
@@ -14,7 +14,7 @@ namespace POETask3_2
         {
             InitializeComponent();
             lblError.Visibility = Visibility.Collapsed;
-
+            btnNext.Visibility = Visibility.Collapsed;
         }
 
         private void btnExpenseCal_Click(object sender, RoutedEventArgs e)
@@ -22,7 +22,8 @@ namespace POETask3_2
             lblError.Visibility = Visibility.Collapsed;
             //list initalize [1](Chand, n.d.)
             List<Expensedata> Expenses = new List<Expensedata>();
-           
+
+
             try
             {
                 Expenses.Add(new Expensedata()
@@ -58,6 +59,9 @@ namespace POETask3_2
 
                 });
 
+                //the next button will not appear until the user enters all values correctly
+                btnNext.Visibility = Visibility.Visible;
+
             }
             catch (Exception)
             {
@@ -78,10 +82,12 @@ namespace POETask3_2
                 Double.Parse(txtGrocery.Text)
             });*/
 
+
             //[2](Sort list in descending order in C# | Techie Delight, 2022)
             //the below method sorts the list in decending order using Linq
             List<Expensedata> sorted = Expenses.OrderByDescending(x => x.Amount).ToList();
             dataExpense.ItemsSource = sorted;
+
 
 
 
