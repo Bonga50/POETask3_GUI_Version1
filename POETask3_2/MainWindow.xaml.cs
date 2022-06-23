@@ -38,6 +38,7 @@ namespace POETask3_2
                     Expense = "Tax",
                     Amount = double.Parse(txtTax.Text)
                 });
+                //total of all expenses
                 UserIncome.Add(new Expensedata()
                 {
                     Expense ="Total Expenses",
@@ -105,16 +106,7 @@ namespace POETask3_2
 
 
 
-            //total for all expenses above
-            /*Expenses.Add(new Expensedata()
-            {
-                Expense = "Total",
-                Amount = Double.Parse(txtCellPhone.Text) +
-                Double.Parse(txtOther.Text)+
-                Double.Parse(txtTravel.Text)+
-                Double.Parse(txtWater.Text)+
-                Double.Parse(txtGrocery.Text)
-            });*/
+           
 
 
             //[2](Sort list in descending order in C# | Techie Delight, 2022)
