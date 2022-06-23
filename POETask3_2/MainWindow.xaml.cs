@@ -23,19 +23,30 @@ namespace POETask3_2
         public MainWindow()
         {
             InitializeComponent();
+            lblError.Visibility = Visibility.Collapsed;
+            
         }
 
         private void btnExpenseCal_Click(object sender, RoutedEventArgs e)
         {
-            //list initalize
+            //list initalize [1](Chand, n.d.)
             List<Expensedata> Expenses = new List<Expensedata>();
-
-            Expenses.Add(new Expensedata()
+            try
             {
-                Expense = "Grocery",
-                Amount = Double.Parse(txtGrocery.Text)
+                Expenses.Add(new Expensedata()
+                {
+                    Expense = "Grocery",
+                    Amount = Double.Parse(txtGrocery.Text)
 
-            });
+                });
+
+            }
+            catch (Exception)
+            {
+
+                lblError.Visibility = Visibility.Visible;
+            }
+            
             Expenses.Add(new Expensedata()
             {
                 Expense = "Water and lights",
@@ -60,15 +71,20 @@ namespace POETask3_2
                 Amount = Double.Parse(txtOther.Text)
 
             });
-            Expenses.Add(new Expensedata()
+            //total for all expenses above
+            /*Expenses.Add(new Expensedata()
             {
                 Expense = "Total",
-                Amount = Double.Parse(txtCellPhone.Text) + Double.Parse(txtOther.Text)+
-                Double.Parse(txtTravel.Text)
+                Amount = Double.Parse(txtCellPhone.Text) +
+                Double.Parse(txtOther.Text)+
+                Double.Parse(txtTravel.Text)+
+                Double.Parse(txtWater.Text)+
+                Double.Parse(txtGrocery.Text)
+            });*/
 
-            });
+            dataExpense.ItemsSource = Expenses;
 
-            Expenses.OrderByDescending();
+
 
         }
 
@@ -77,8 +93,14 @@ namespace POETask3_2
 
     class Expensedata
     {
+       
         public String Expense { get; set; }
         public double Amount { get; set; }
     }
 
 }
+/*Refernces
+ * 
+ * [1] Chand, M. (n.d.). DataGrid in WPF. C-Sharpcorner. Retrieved June 22, 2022, from
+ * https://www.c-sharpcorner.com/UploadFile/mahesh/datagrid-in-wpf/
+ */

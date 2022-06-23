@@ -34,6 +34,8 @@
         </Grid.RowDefinitions>
         <!--Title -->
         <TextBlock Grid.Column="1" Grid.Row="1" Text="Buget Planner" Margin="10" FontSize="20"/>
+        <!--error text -->
+        <TextBlock x:Name="lblError" Grid.Column="2" Grid.Row="1" Text="ERROR" FontSize="14" Margin="45,15,0,0"/>
         <!-- Gross Income -->
         <TextBlock Grid.Column="1" Grid.Row="2" Text="Gross Income" Margin="15,5,0,10" FontSize="16"  />
         <TextBox x:Name="txtGross" Grid.Column="2" Grid.Row="2" Text="" Width="150" Margin="5"/>
@@ -60,7 +62,7 @@
         <!--Button to calculate-->
         <Button x:Name="btnExpenseCal"  Grid.Column="2" Grid.Row="10"  Content="Calculate" Margin="5,5,5,0" Height="20" VerticalAlignment="Top" Click="btnExpenseCal_Click"/>
         <!--Data table-->
-        <DataGrid x:Name="dataExpense" Grid.Row="1" Grid.Column="5"  AutoGenerateColumns="False" Width="300" >
+        <DataGrid x:Name="dataExpense" Grid.Row="1" Grid.Column="5" Grid.RowSpan="4" AutoGenerateColumns="False" Width="300" >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Expense" Width ="150" Binding ="{Binding Path = Expense}" />
                 <DataGridTextColumn Header="Amount" Width ="150" Binding="{Binding Path = Amount}" />
