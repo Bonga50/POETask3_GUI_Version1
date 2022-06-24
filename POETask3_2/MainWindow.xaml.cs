@@ -77,7 +77,7 @@ namespace POETask3_2
             }
             catch (Exception)
             {
-
+                btnNext.Visibility = Visibility.Collapsed;
                 lblError.Visibility = Visibility.Visible;
             }
 
@@ -118,7 +118,7 @@ namespace POETask3_2
             }
             catch (Exception)
             {
-
+                btnNext.Visibility = Visibility.Collapsed;
                 lblError.Visibility = Visibility.Visible;
             }
             return UserIncome;
