@@ -10,6 +10,7 @@ namespace POETask3_2
     /// </summary>
     public partial class MainWindow : Window
     {
+        Rentalwindow NextObj = new Rentalwindow();
         public MainWindow()
         {
             InitializeComponent();
@@ -124,7 +125,11 @@ namespace POETask3_2
             return UserIncome;
         }
 
-
+        private void btnNext_Click(object sender, RoutedEventArgs e)
+        {
+            NextObj.Show();
+            this.Close();
+        }
     }
 
     class Expensedata

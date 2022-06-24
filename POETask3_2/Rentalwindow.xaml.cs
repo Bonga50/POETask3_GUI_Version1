@@ -23,5 +23,18 @@ namespace POETask3_2
         {
             InitializeComponent();
         }
+
+        private void cmbCar_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (cmbCar.SelectedIndex.Equals(0)) 
+            {
+
+            } else if (cmbCar.SelectedIndex.Equals(1))
+            {
+                
+
+            }
+            
+        }
     }
 }

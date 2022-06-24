@@ -34,7 +34,7 @@
                 <RowDefinition Height="20"/>
             </Grid.RowDefinitions>
         <TextBlock Text="Buying Car?" Grid.Column="1" Grid.Row="1" FontSize="16" Margin="5" />
-        <ComboBox Name="cmbCar" Grid.Column="2" Grid.Row="1" Width="100" Margin="15,0,5,0" >
+        <ComboBox Name="cmbCar" Grid.Column="2" Grid.Row="1" Width="100" Margin="15,0,5,0" Height="31" VerticalAlignment="Bottom" SelectionChanged="cmbCar_SelectionChanged" >
             <ComboBoxItem>Yes</ComboBoxItem>
             <ComboBoxItem>No</ComboBoxItem>
         </ComboBox>
@@ -64,7 +64,8 @@
             </DataGrid.Columns>
             
         </DataGrid>
-        
+        <!--car calculate button for car Items-->
+        <Button x:Name="Calculate" Grid.Column="2" Grid.Row="8" Margin="5"  Content="Calculate" />
 
     </Grid>
 </Window>
