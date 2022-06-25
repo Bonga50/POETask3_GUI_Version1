@@ -10,12 +10,20 @@ namespace POETask3_2
     /// </summary>
     public partial class MainWindow : Window
     {
+        //instance for main window to use main window properties in other windows
+        public static MainWindow instance;
+
+        public static double Groceries;
+
         Rentalwindow NextObj = new Rentalwindow();
         public MainWindow()
         {
             InitializeComponent();
+            instance = this;
             lblError.Visibility = Visibility.Collapsed;
             btnNext.Visibility = Visibility.Collapsed;
+            //variables for expenses 
+            
         }
 
         private void btnExpenseCal_Click(object sender, RoutedEventArgs e)
@@ -72,6 +80,7 @@ namespace POETask3_2
 
                 });
 
+                Groceries = double.Parse(txtGrocery.Text);
                 //the next button will not appear until the user enters all values correctly
                 btnNext.Visibility = Visibility.Visible;
 
@@ -128,7 +137,10 @@ namespace POETask3_2
         private void btnNext_Click(object sender, RoutedEventArgs e)
         {
             NextObj.Show();
-            this.Close();
+            //this.Close();
+            this.Visibility = Visibility.Collapsed;
+            
+            
         }
     }
 

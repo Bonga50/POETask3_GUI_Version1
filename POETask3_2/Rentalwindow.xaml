@@ -59,15 +59,16 @@
         <TextBlock x:Name="lblInsurance" Text="Insurance premium" Grid.Column="1" Grid.Row="7" FontSize="16" Margin="5" />
         <TextBox x:Name="txtCarInsuranse" Grid.Row="7" Grid.Column="2" Margin="5"/>
 
-        <DataGrid x:Name="CarPlusExpenses" Grid.Row="1" Grid.Column="4" Margin="120,10,1,1" Grid.ColumnSpan="1" AutoGenerateColumns="False" Grid.RowSpan="5">
+        <DataGrid x:Name="CarPlusExpenses" Grid.Row="1" Grid.Column="3" Margin="120,10,1,1" Grid.ColumnSpan="2" AutoGenerateColumns="False" Grid.RowSpan="5">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Expense Item" Width ="150" Binding ="{Binding Path = ItemName}" />
+                <DataGridTextColumn Header="Expense Item" Width ="150" Binding ="{Binding Path = Expense}" />
                 <DataGridTextColumn Header="Amount" Width ="150" Binding="{Binding Path = Amount}" />
             </DataGrid.Columns>
             
         </DataGrid>
         <!--car calculate button for car Items-->
-        <Button x:Name="btnCalculate" Grid.Column="2" Grid.Row="8" Margin="5"  Content="Calculate" />
-        
+        <Button x:Name="btnCalculate" Grid.Column="2" Grid.Row="8" Margin="5"  Content="Calculate" Click="btnCalculate_Click" />
+        <Button x:Name="btnNext2" Grid.Column="4" Grid.Row="10" Margin="50,5,5,5" Content="Next" Width="150"/>
+        <Button x:Name="btnBack" Grid.Column="3" Grid.Row="10" Margin="100,5,5,5" Content="Back" Width="150" Click="btnBack_Click"/>
     </Grid>
 </Window>
