@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -9,14 +9,14 @@ namespace POETask3_2
     /// </summary>
     public partial class Rentalwindow : Window
     {
-        //to close the current window when back is clicked 
-       
+        BuyCar CarObj = new BuyCar();
         public static Rentalwindow instance;
-        double carTotal = 0;
+        int Carchoice;
         public Rentalwindow()
         {
             InitializeComponent();
             colapsItems();
+            lblError.Visibility = Visibility.Collapsed;
         }
 
         private void cmbCar_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -25,16 +25,15 @@ namespace POETask3_2
             {
 
                 visableItems();
+                Carchoice = 0;
 
             }
             else if (cmbCar.SelectedIndex.Equals(1))
             {
                 colapsItems();
-
+                Carchoice = 1;
+                btnCalculate.Visibility = Visibility.Visible;
             }
-
-
-
         }
         public void colapsItems()
         {
@@ -55,7 +54,8 @@ namespace POETask3_2
             //button
             btnCalculate.Visibility = Visibility.Collapsed;
         }
-        public void visableItems() {
+        public void visableItems()
+        {
             //make the car items appear only when yes is selected 
             txtCarMake.Visibility = Visibility.Visible;
             txtCarModel.Visibility = Visibility.Visible;
@@ -82,63 +82,49 @@ namespace POETask3_2
 
         private void btnCalculate_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow.
-            CarPlusExpenses.ItemsSource = LoadExpenseData();
-        }
-
-        private List<Expensedata> LoadExpenseData()
-        {
-            //list initalize for expenses [1](Chand, n.d.)
-            List<Expensedata> Expenses = new List<Expensedata>();
-
-            try
+            //This will check if car  item already exists in the list 
+            bool CaralreadyExists = MainWindow.SendingList.Any(x => x.Expense.Equals("Car"));
+            if (Carchoice == 0)
             {
-                Expenses.Add(new Expensedata()
+                double purchasePrice = double.Parse(txtCarPurchase.Text);
+                double depositPrecntage = double.Parse(txtCardeposit.Text);
+                double interestRate = double.Parse(txtCarInterest.Text);
+                double numOfMonths = 24;
+                double Answer = CarObj.calculateCost(purchasePrice, depositPrecntage, interestRate, numOfMonths);
+                //add car to list of expenses.
+                try
+                {
+                    MainWindow.SendingList.Add(new Expensedata()
+                    {
+
+                        Expense = "Car",
+                        Amount = Answer + double.Parse(txtCarInsuranse.Text)
+
+                    });
+                }
+                catch (System.Exception)
                 {
 
-                    Expense = "Grocery",
-                    Amount = MainWindow.Groceries
+                    lblError.Visibility = Visibility.Visible;
+                }
+              
+
+            } else if (Carchoice ==1) {
+                MainWindow.SendingList.Add(new Expensedata()
+                {
+
+                    Expense = "Car",
+                    Amount = 0
 
                 }) ;
-/*                Expenses.Add(new Expensedata()
-                {
-                    Expense = "Water and lights",
-                    Amount = Double.Parse(txtWater.Text)
-
-                });
-                Expenses.Add(new Expensedata()
-                {
-                    Expense = "Travel costs (including petrol)",
-                    Amount = Double.Parse(txtTravel.Text)
-
-                });
-                Expenses.Add(new Expensedata()
-                {
-                    Expense = "Cell phone and telephone",
-                    Amount = Double.Parse(txtCellPhone.Text)
-
-                });
-                Expenses.Add(new Expensedata()
-                {
-                    Expense = "Other expenses",
-                    Amount = Double.Parse(txtOther.Text)
-
-                });
-
-                Groceries = double.Parse(txtGrocery.Text);
-                //the next button will not appear until the user enters all values correctly
-                btnNext.Visibility = Visibility.Visible;*/
-
             }
-            catch (System.Exception)
-            {
-                /*btnNext.Visibility = Visibility.Collapsed;
-                lblError.Visibility = Visibility.Visible;*/
-            }
-
-            return Expenses;
+            cmbCar.Visibility = Visibility.Collapsed;
+            lblBuyCar.Text = ""; 
+            CarPlusExpenses.ItemsSource = MainWindow.SendingList;
 
         }
+
+
     }
-  
+
 }

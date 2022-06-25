@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 
@@ -14,6 +15,7 @@ namespace POETask3_2
         public static MainWindow instance;
 
         public static double Groceries;
+        public static ObservableCollection<Expensedata> SendingList;
 
         Rentalwindow NextObj = new Rentalwindow();
         public MainWindow()
@@ -32,19 +34,20 @@ namespace POETask3_2
            lblError.Visibility = Visibility.Collapsed;
             //[2](Sort list in descending order in C# | Techie Delight, 2022)
             //the below method sorts the list in decending order using Linq
-            List<Expensedata> sorted = LoadExpenseData().OrderByDescending(x => x.Amount).ToList();
-
+            ObservableCollection<Expensedata> sorted = new ObservableCollection<Expensedata>();
+            //sorted = (ObservableCollection<Expensedata>)LoadExpenseData().OrderByDescending(x => x.Amount);
+            SendingList = LoadExpenseData();
             // dataExpense.ItemsSource = sorted;
-            dataUserIncome.ItemsSource = LoadUserIncomeData();
-            dataExpense.ItemsSource = sorted;
+            dataUserIncome.ItemsSource = LoadUserIncomeData().OrderByDescending(x => x.Amount);
+            dataExpense.ItemsSource = LoadExpenseData().OrderByDescending(x => x.Amount); 
 
         }
         //this method loads the list of expenses
         //[1](Chand, n.d.)
-        private List<Expensedata> LoadExpenseData()
+        private ObservableCollection<Expensedata> LoadExpenseData()
         {
             //list initalize for expenses [1](Chand, n.d.)
-            List<Expensedata> Expenses = new List<Expensedata>();
+            ObservableCollection<Expensedata> Expenses = new ObservableCollection<Expensedata>();
 
             try
             {
@@ -80,7 +83,6 @@ namespace POETask3_2
 
                 });
 
-                Groceries = double.Parse(txtGrocery.Text);
                 //the next button will not appear until the user enters all values correctly
                 btnNext.Visibility = Visibility.Visible;
 
@@ -95,9 +97,9 @@ namespace POETask3_2
 
         }
         //User income data such as total income , and expenses or tax
-        private List<Expensedata> LoadUserIncomeData() {
+        private ObservableCollection<Expensedata> LoadUserIncomeData() {
             //Gross income and tax 
-            List<Expensedata> UserIncome = new List<Expensedata>();
+            ObservableCollection<Expensedata> UserIncome = new ObservableCollection<Expensedata>();
 
             try
             {
@@ -144,7 +146,7 @@ namespace POETask3_2
         }
     }
 
-    class Expensedata
+   public class Expensedata
     {
 
         public String Expense { get; set; }
