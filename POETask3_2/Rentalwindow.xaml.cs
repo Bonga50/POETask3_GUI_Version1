@@ -89,7 +89,7 @@ namespace POETask3_2
                 double purchasePrice = double.Parse(txtCarPurchase.Text);
                 double depositPrecntage = double.Parse(txtCardeposit.Text);
                 double interestRate = double.Parse(txtCarInterest.Text);
-                double numOfMonths = 24;
+                double numOfMonths = 60;
                 double Answer = CarObj.calculateCost(purchasePrice, depositPrecntage, interestRate, numOfMonths);
                 //add car to list of expenses.
                 try
@@ -124,7 +124,10 @@ namespace POETask3_2
 
         }
 
+        private void btnNext2_Click(object sender, RoutedEventArgs e)
+        {
 
+        }
     }
 
 }
