@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
@@ -11,35 +10,38 @@ namespace POETask3_2
     /// </summary>
     public partial class MainWindow : Window
     {
+        //[4](TACV - The Amazing Code-Verse, 2021)
         //instance for main window to use main window properties in other windows
         public static MainWindow instance;
 
         public static double Groceries;
+        //[3] (Kumar, n.d.)
         public static ObservableCollection<Expensedata> SendingList;
 
         Rentalwindow NextObj = new Rentalwindow();
         public MainWindow()
         {
             InitializeComponent();
+            //instance so the list can be sent to next class
             instance = this;
+            //will appear only when an error is caught
             lblError.Visibility = Visibility.Collapsed;
             btnNext.Visibility = Visibility.Collapsed;
-            //variables for expenses 
-            
+
+
         }
 
         private void btnExpenseCal_Click(object sender, RoutedEventArgs e)
         {
 
-           lblError.Visibility = Visibility.Collapsed;
+            lblError.Visibility = Visibility.Collapsed;
+
+            SendingList = LoadExpenseData();
+
             //[2](Sort list in descending order in C# | Techie Delight, 2022)
             //the below method sorts the list in decending order using Linq
-            ObservableCollection<Expensedata> sorted = new ObservableCollection<Expensedata>();
-            //sorted = (ObservableCollection<Expensedata>)LoadExpenseData().OrderByDescending(x => x.Amount);
-            SendingList = LoadExpenseData();
-            // dataExpense.ItemsSource = sorted;
             dataUserIncome.ItemsSource = LoadUserIncomeData().OrderByDescending(x => x.Amount);
-            dataExpense.ItemsSource = LoadExpenseData().OrderByDescending(x => x.Amount); 
+            dataExpense.ItemsSource = LoadExpenseData().OrderByDescending(x => x.Amount);
 
         }
         //this method loads the list of expenses
@@ -97,7 +99,8 @@ namespace POETask3_2
 
         }
         //User income data such as total income , and expenses or tax
-        private ObservableCollection<Expensedata> LoadUserIncomeData() {
+        private ObservableCollection<Expensedata> LoadUserIncomeData()
+        {
             //Gross income and tax 
             ObservableCollection<Expensedata> UserIncome = new ObservableCollection<Expensedata>();
 
@@ -141,12 +144,12 @@ namespace POETask3_2
             NextObj.Show();
             //this.Close();
             this.Visibility = Visibility.Collapsed;
-            
-            
+
+
         }
     }
 
-   public class Expensedata
+    public class Expensedata
     {
 
         public String Expense { get; set; }
@@ -162,4 +165,11 @@ namespace POETask3_2
  * [2] Techie Delight. 2022. Sort list in descending order in C# | Techie Delight. [online] Available at:
  * <https://www.techiedelight.com/sort-list-in-descending-order-in-csharp/> 
  * [Accessed 23 June 2022].
+ * 
+ * [3] Kumar, P. (n.d.). ObservableCollection in WPF. C-Sharpcorner. Retrieved June 26, 2022, from
+ * https://www.c-sharpcorner.com/UploadFile/e06010/observablecollection-in-wpf/
+ * 
+ * [4] TACV - The Amazing Code-Verse. (2021, February 28). BEST Way to SEND DATA between Multiple Forms | C# Windows Form [Video].
+ * YouTube. https://www.youtube.com/watch?v=t-4caAZKLJw
+ * 
  */

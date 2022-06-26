@@ -60,6 +60,7 @@
     <Compile Include="HomeLoan.xaml.cs">
       <DependentUpon>HomeLoan.xaml</DependentUpon>
     </Compile>
+    <Compile Include="HomeLoanCalculation.cs" />
     <Compile Include="Rentalwindow.xaml.cs">
       <DependentUpon>Rentalwindow.xaml</DependentUpon>
     </Compile>

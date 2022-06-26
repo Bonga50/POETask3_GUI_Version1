@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Title="HomeLoan" Height="450" Width="800">
     <Grid>
+        <!--[5](IAmTimCorey, 2017) -->
         
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="20"/>
@@ -36,27 +37,44 @@
         <!--Renting question -->
         <TextBlock Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Text="Will you be renting or Buying property" FontSize="16" Margin="5"   />
         <!--Rent/Buy combo box -->
-        <ComboBox x:Name="cmbBuyHome" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="2" Margin="5" Width="150">
+        <ComboBox x:Name="cmbBuyHome" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="2" Margin="5" Width="150" SelectionChanged="cmbBuyHome_SelectionChanged">
             <ComboBoxItem>Renting</ComboBoxItem>
             <ComboBoxItem>Buying Property</ComboBoxItem>
         </ComboBox>
         <!-- necessary Buying home info -->
         <!-- Purchase price -->
-        <TextBlock Text="Purchase price" Grid.Column="1" Grid.Row="3" Margin="5" FontSize="16" />
+        <TextBlock x:Name="lblPurchasePrice" Text="Purchase price" Grid.Column="1" Grid.Row="3" Margin="5" FontSize="16" />
         <TextBox x:Name="txtHomePurchasePrice" Grid.Column="2" Grid.Row="3" Width="150" Margin="5"/>
         <!--Deposit percentage-->
-        <TextBlock Text="Deposit(Percentage)" Grid.Column="1" Grid.Row="4" Margin="5" FontSize="16" />
+        <TextBlock x:Name="lblDeposit" Text="Deposit(Percentage)" Grid.Column="1" Grid.Row="4" Margin="5" FontSize="16" />
         <TextBox x:Name="txtHomedeposit" Grid.Column="2" Grid.Row="4" Width="150" Margin="5"/>
         <!--Interest rate-->
-        <TextBlock Text="Interest rate(Percentage)" Grid.Column="1" Grid.Row="5" Margin="5" FontSize="16" />
+        <TextBlock x:Name="lblInterest" Text="Interest rate(Percentage)" Grid.Column="1" Grid.Row="5" Margin="5" FontSize="16" />
         <TextBox x:Name="txtHomeInterest" Grid.Column="2" Grid.Row="5" Width="150" Margin="5"/>
         <!--Time -->
-        <TextBlock Text="Pay Back Time(Months)" Grid.Column="1" Grid.Row="6" Margin="5" FontSize="16" />
+        <TextBlock x:Name="lblTime" Text="Pay Back Time(Months)" Grid.Column="1" Grid.Row="6" Margin="5" FontSize="16" />
         <TextBox x:Name="txtHomeTIme" Grid.Column="2" Grid.Row="6" Width="150" Margin="5"/>
         <!--Rent Home -->
-        <TextBlock Text="Rental Amount" Grid.Column="1" Grid.Row="7" Margin="5" FontSize="16" />
+        <TextBlock x:Name="lblRenting" Text="Rental Amount" Grid.Column="1" Grid.Row="7" Margin="5" FontSize="16" />
         <TextBox x:Name="txtRentalAmount" Grid.Column="2" Grid.Row="7" Width="150" Margin="5"/>
         <!--Calculate button -->
-        <Button x:Name="btnHomeloanCalc" Grid.Column="2"  Grid.Row="8" Content="Calculate" Margin="5" />
+        <Button x:Name="btnHomeloanCalc" Grid.Column="2"  Grid.Row="8" Content="Calculate" Margin="5,5,5,0" Height="21" VerticalAlignment="Top" Click="btnHomeloanCalc_Click" />
+        <TextBlock x:Name="lblError" Grid.Column="1" Grid.Row="8" Text="Error" FontSize="16" Foreground="red" HorizontalAlignment="Center" Margin="5" />
+        <!--Data grid -->
+        <DataGrid x:Name="HomeLoanPlusExp" Grid.Row="1" Grid.Column="3" Margin="70,10,1,1" Grid.ColumnSpan="2" AutoGenerateColumns="False" Grid.RowSpan="5" Width="300">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Expense Item" Width ="150" Binding ="{Binding Path = Expense}" />
+                <DataGridTextColumn Header="Amount" Width ="150" Binding="{Binding Path = Amount}" />
+            </DataGrid.Columns>
+
+        </DataGrid>
+        <!--next and back button -->
+        <Button x:Name="Next3" Grid.Column="4" Grid.Row="9" Content="Next" Margin="10,108,0,0" />
+        <Button x:Name="BackToMain" Grid.Column="3" Grid.Row="9" Content="Back" Margin="5,108,10,0" />
     </Grid>
 </Window>
+<!--Refernces 
+    [5] IAmTimCorey. (2017, May 26). Intro to WPF: Learn the basics and best practices of WPF for C# [Video].
+    YouTube. https://www.youtube.com/watch?v=gSfMNjWNoX0
+    
+    -->

@@ -17,6 +17,7 @@ namespace POETask3_2
             InitializeComponent();
             colapsItems();
             lblError.Visibility = Visibility.Collapsed;
+            btnNext2.Visibility = Visibility.Collapsed;
         }
 
         private void cmbCar_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -35,6 +36,7 @@ namespace POETask3_2
                 btnCalculate.Visibility = Visibility.Visible;
             }
         }
+
         public void colapsItems()
         {
             //make the car items appear only when yes is selected 
@@ -75,9 +77,16 @@ namespace POETask3_2
 
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow mainWindow = new MainWindow();
-            this.Visibility = Visibility.Collapsed;
-            mainWindow.Visibility = Visibility.Visible;
+            //[6] (Chand, n.d.-b)
+            MessageBoxResult result = MessageBox.Show("Are you sure, (This will discard all data and you will start again" +
+                ")", "Confirmation", MessageBoxButton.YesNo);
+            if (result == MessageBoxResult.Yes)
+            {
+
+                MainWindow mainWindow = new MainWindow();
+                this.Visibility = Visibility.Collapsed;
+                mainWindow.Visibility = Visibility.Visible;
+            }
         }
 
         private void btnCalculate_Click(object sender, RoutedEventArgs e)
@@ -119,15 +128,25 @@ namespace POETask3_2
                 }) ;
             }
             cmbCar.Visibility = Visibility.Collapsed;
-            lblBuyCar.Text = ""; 
+            lblBuyCar.Text = "               Calculated   ";
+            btnNext2.Visibility = Visibility.Visible;
+            btnCalculate.Visibility = Visibility.Collapsed;
             CarPlusExpenses.ItemsSource = MainWindow.SendingList;
 
         }
 
         private void btnNext2_Click(object sender, RoutedEventArgs e)
         {
+          
+                HomeLoan HomeObj = new HomeLoan();
+                this.Hide();
+                HomeObj.Show();
 
         }
     }
 
 }
+/*Refernces 
+ * [6] Chand, M. (n.d.-b). MessageBox In WPF. C-Sharpcorner. Retrieved June 26, 2022, from 
+ * https://www.c-sharpcorner.com/UploadFile/mahesh/messagebox-in-wpf/
+ */

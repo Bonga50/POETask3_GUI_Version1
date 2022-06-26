@@ -67,9 +67,9 @@
             
         </DataGrid>
         <!--car calculate button for car Items-->
-        <Button x:Name="btnCalculate" Grid.Column="2" Grid.Row="8" Margin="5"  Content="Calculate" Click="btnCalculate_Click" />
-        <Button x:Name="btnNext2" Grid.Column="4" Grid.Row="10" Margin="35,5,5,5" Content="Next" Width="150" Click="btnNext2_Click"/>
-        <Button x:Name="btnBack" Grid.Column="3" Grid.Row="10" Margin="100,5,5,5" Content="Back" Width="150" Click="btnBack_Click"/>
+        <Button x:Name="btnCalculate" Grid.Column="2" Grid.Row="8" Margin="5"  Content="Calculate" Click="btnCalculate_Click" Width="100" />
+        <Button x:Name="btnNext2" Grid.Column="4" Grid.Row="10" Margin="35,75,5,5" Content="Next" Width="150" Click="btnNext2_Click"/>
+        <Button x:Name="btnBack" Grid.Column="3" Grid.Row="10" Margin="100,75,5,5" Content="Back" Width="150" Click="btnBack_Click"/>
         <TextBlock x:Name="lblError" Grid.Row="9" Grid.Column="1" Text="Error" Margin="5" FontSize="16" Foreground="red" HorizontalAlignment="Center"/>
     </Grid>
 </Window>
