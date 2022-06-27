@@ -64,6 +64,9 @@
     <Compile Include="Rentalwindow.xaml.cs">
       <DependentUpon>Rentalwindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="FinalDeductionswindow.xaml.cs">
+      <DependentUpon>FinalDeductionswindow.xaml</DependentUpon>
+    </Compile>
     <Page Include="HomeLoan.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -81,6 +84,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Rentalwindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FinalDeductionswindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
