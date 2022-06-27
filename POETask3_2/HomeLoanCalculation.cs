@@ -8,9 +8,24 @@ namespace POETask3_2
 {
     class HomeLoanCalculation : Expense
     {
-        public override double calculateCost(double P, double D, double I, double N)
+        public override double calculateCost(double PurchasePrice, double homeDeposit, double InterstRate, double Time)
         {
-            throw new NotImplementedException();
+
+            double nDeposit = (PurchasePrice * homeDeposit) / 100;
+
+            double nPurchasePrice = PurchasePrice - nDeposit;
+
+            double nInterest = InterstRate / 100;
+
+            double nTime = Time / 12;
+
+
+
+            double A = nPurchasePrice * (1 + nInterest * nTime);
+
+            double Mounthly = A / Time;
+
+            return Mounthly;
         }
     }
 }

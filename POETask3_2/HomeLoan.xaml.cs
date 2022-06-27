@@ -1,16 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace POETask3_2
 {
@@ -19,6 +9,10 @@ namespace POETask3_2
     /// </summary>
     public partial class HomeLoan : Window
     {
+        //buy or rent choice
+        int choice;
+        //will hold value of home loan or renting
+        double homeAmount;
         public HomeLoan()
         {
             InitializeComponent();
@@ -27,6 +21,7 @@ namespace POETask3_2
             btnHomeloanCalc.Visibility = Visibility.Collapsed;
             invisableBuy();
             invisableRental();
+            btnNext3.Visibility = Visibility.Collapsed;
         }
 
         private void cmbBuyHome_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -35,24 +30,28 @@ namespace POETask3_2
             {
                 invisableBuy();
                 visableRental();
-               
+                choice = 0;
 
-            } else if (cmbBuyHome.SelectedIndex.Equals(1)) {
+            }
+            else if (cmbBuyHome.SelectedIndex.Equals(1))
+            {
                 invisableRental();
                 visableBuy();
+                choice = 1;
             }
             btnHomeloanCalc.Visibility = Visibility.Visible;
 
         }
-        
+
         private void invisableRental()
         {
             //if the user picks buy the Rent items disappear
             txtRentalAmount.Visibility = Visibility.Collapsed;
             lblRenting.Visibility = Visibility.Collapsed;
-   
+
         }
-        private void visableRental() {
+        private void visableRental()
+        {
             //if the user picks renting the renting items appear
             txtRentalAmount.Visibility = Visibility.Visible;
             lblRenting.Visibility = Visibility.Visible;
@@ -86,7 +85,65 @@ namespace POETask3_2
 
         private void btnHomeloanCalc_Click(object sender, RoutedEventArgs e)
         {
+            if (choice == 0)
+            {
+                try
+                {
+                    homeAmount = double.Parse(txtRentalAmount.Text);
 
+                }
+                catch (Exception)
+                {
+
+                    lblError.Visibility = Visibility.Visible;
+                }
+                
+
+            }
+            else if (choice == 1)
+            {
+                try
+                {
+                    double HomePurchasePrice = double.Parse(txtHomePurchasePrice.Text);
+                    double homeDeposit = double.Parse(txtHomedeposit.Text);
+                    double homeInterestRate = double.Parse(txtHomeInterest.Text);
+                    double homeRepayment = double.Parse(txtHomeTIme.Text);
+                    HomeLoanCalculation HomeloancalcOBJ = new HomeLoanCalculation();
+                    homeAmount = HomeloancalcOBJ.calculateCost(HomePurchasePrice, homeDeposit, homeInterestRate, homeRepayment);
+                }
+                catch (Exception)
+                {
+
+                    lblError.Visibility = Visibility.Visible;
+                }
+
+
+            }
+
+            MainWindow.SendingList.Add(new Expensedata
+            {
+                Expense = "Home",
+                Amount = homeAmount
+            });
+
+            HomeLoanPlusExp.ItemsSource = MainWindow.SendingList;
+            btnHomeloanCalc.Visibility = Visibility.Collapsed;
+            cmbBuyHome.Visibility = Visibility.Collapsed;
+            lblBuyRentQuestion.Text = "            Calculated   ";
+            btnNext3.Visibility = Visibility.Visible;
+        }
+
+        private void BackToMain_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult result = MessageBox.Show("Are you sure, (This will discard all data and you will start again" +
+               ")", "Confirmation", MessageBoxButton.YesNo);
+            if (result == MessageBoxResult.Yes)
+            {
+
+                MainWindow mainWindow = new MainWindow();
+                this.Hide();
+                mainWindow.Show();
+            }
         }
     }
 }
