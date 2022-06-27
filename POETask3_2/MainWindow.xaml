@@ -6,79 +6,81 @@
         xmlns:local="clr-namespace:POETask3_2"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800" >
-    <Grid x:Name="lblGross">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="20"/>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="20"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="20"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="20"/>
-        </Grid.RowDefinitions>
-        <!--Title -->
-        <TextBlock Grid.Column="1" Grid.Row="1" Text="Buget Planner" Margin="10" FontSize="20"/>
-        <!--error text -->
-        <TextBlock x:Name="lblError" Foreground="Red" Grid.Column="2" Grid.Row="1" Text="ERROR" FontSize="14" Margin="45,15,0,0"/>
-        <!-- Gross Income -->
-        <TextBlock Grid.Column="1" Grid.Row="2" Text="Gross Income" Margin="15,5,0,10" FontSize="16"  />
-        <TextBox x:Name="txtGross" Grid.Column="2" Grid.Row="2" Text="" Width="150" Margin="5"/>
-        <!--Tax -->
-        <TextBlock Grid.Column="1" Grid.Row="3" Text="Tax" Margin="15,5,0,10" FontSize="16"  />
-        <TextBox x:Name="txtTax" Grid.Column="2" Grid.Row="3" Text="" Width="150" Margin="5"/>
-        <!--Expenses start here -->
-        <TextBlock Grid.Column="1" Grid.Row="4" Text="Expenses" Margin="15,5,0,10" FontSize="16"/>
-        <!--Grocery -->
-        <TextBlock Grid.Column="1" Grid.Row="5" Text="Groceries" Margin="15,5,0,10" FontSize="16"/>
-        <TextBox x:Name="txtGrocery" Grid.Column="2" Grid.Row="5" Text="" Width="150" Margin="5"/>
-        <!--Water and lights -->
-        <TextBlock Grid.Column="1" Grid.Row="6" Text="Water and lights" Margin="15,5,0,10" FontSize="16"/>
-        <TextBox x:Name="txtWater" Grid.Column="2" Grid.Row="6" Text="" Width="150" Margin="5"/>
-        <!--Travel cost -->
-        <TextBlock Grid.Column="1" Grid.Row="7" Text="Travel cost" Margin="15,5,0,10" FontSize="16"/>
-        <TextBox x:Name="txtTravel" Grid.Column="2" Grid.Row="7" Text="" Width="150" Margin="5"/>
-        <!--Cell phone and telephone-->
-        <TextBlock Grid.Column="1" Grid.Row="8" Text="Cell phone" Margin="15,5,0,10" FontSize="16"/>
-        <TextBox x:Name="txtCellPhone" Grid.Column="2" Grid.Row="8" Text="" Width="150" Margin="5"/>
-        <!--Other expenses-->
-        <TextBlock Grid.Column="1" Grid.Row="9" Text="Other expenses" Margin="15,5,0,10" FontSize="16"/>
-        <TextBox x:Name="txtOther" Grid.Column="2" Grid.Row="9" Text="" Width="150" Margin="5"/>
-        <!--Button to calculate-->
-        <Button x:Name="btnExpenseCal"  Grid.Column="2" Grid.Row="10"  Content="Calculate" Margin="20,5,20,5" Height="20" VerticalAlignment="Top" Click="btnExpenseCal_Click"/>
-        <!--Data table for expenses-->
-        <DataGrid x:Name="dataExpense" Grid.Row="1" Grid.Column="5" Grid.RowSpan="4" AutoGenerateColumns="False" Width="300" >
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Expense" Width ="150" Binding ="{Binding Path = Expense}" />
-                <DataGridTextColumn Header="Amount" Width ="150" Binding="{Binding Path = Amount}" />
-            </DataGrid.Columns>
-           
-        </DataGrid>
-        <!--Data table for userIncomeItems-->
-        <DataGrid x:Name="dataUserIncome" Grid.Row="6" Grid.Column="5" Grid.RowSpan="3" AutoGenerateColumns="False" Width="300" >
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Income Item" Width ="150" Binding ="{Binding Path = Expense}" />
-                <DataGridTextColumn Header="Amount" Width ="150" Binding="{Binding Path = Amount}" />
-            </DataGrid.Columns>
+    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+        <Grid x:Name="lblGross">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="20"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="20"/>
+            </Grid.RowDefinitions>
+            <!--Title -->
+            <TextBlock Grid.Column="1" Grid.Row="1" Text="Buget Planner" Margin="10" FontSize="20"/>
+            <!--error text -->
+            <TextBlock x:Name="lblError" Foreground="Red" Grid.Column="2" Grid.Row="1" Text="ERROR" FontSize="14" Margin="45,15,0,0"/>
+            <!-- Gross Income -->
+            <TextBlock Grid.Column="1" Grid.Row="2" Text="Gross Income" Margin="15,5,0,10" FontSize="16"  />
+            <TextBox x:Name="txtGross" Grid.Column="2" Grid.Row="2" Text="" Width="150" Margin="5"/>
+            <!--Tax -->
+            <TextBlock Grid.Column="1" Grid.Row="3" Text="Tax" Margin="15,5,0,10" FontSize="16"  />
+            <TextBox x:Name="txtTax" Grid.Column="2" Grid.Row="3" Text="" Width="150" Margin="5"/>
+            <!--Expenses start here -->
+            <TextBlock Grid.Column="1" Grid.Row="4" Text="Expenses" Margin="15,5,0,10" FontSize="16"/>
+            <!--Grocery -->
+            <TextBlock Grid.Column="1" Grid.Row="5" Text="Groceries" Margin="15,5,0,10" FontSize="16"/>
+            <TextBox x:Name="txtGrocery" Grid.Column="2" Grid.Row="5" Text="" Width="150" Margin="5"/>
+            <!--Water and lights -->
+            <TextBlock Grid.Column="1" Grid.Row="6" Text="Water and lights" Margin="15,5,0,10" FontSize="16"/>
+            <TextBox x:Name="txtWater" Grid.Column="2" Grid.Row="6" Text="" Width="150" Margin="5"/>
+            <!--Travel cost -->
+            <TextBlock Grid.Column="1" Grid.Row="7" Text="Travel cost" Margin="15,5,0,10" FontSize="16"/>
+            <TextBox x:Name="txtTravel" Grid.Column="2" Grid.Row="7" Text="" Width="150" Margin="5"/>
+            <!--Cell phone and telephone-->
+            <TextBlock Grid.Column="1" Grid.Row="8" Text="Cell phone" Margin="15,5,0,10" FontSize="16"/>
+            <TextBox x:Name="txtCellPhone" Grid.Column="2" Grid.Row="8" Text="" Width="150" Margin="5"/>
+            <!--Other expenses-->
+            <TextBlock Grid.Column="1" Grid.Row="9" Text="Other expenses" Margin="15,5,0,10" FontSize="16"/>
+            <TextBox x:Name="txtOther" Grid.Column="2" Grid.Row="9" Text="" Width="150" Margin="5"/>
+            <!--Button to calculate-->
+            <Button x:Name="btnExpenseCal"  Grid.Column="2" Grid.Row="10"  Content="Calculate"  Margin="20,5,20,5" Height="20" VerticalAlignment="Top" Click="btnExpenseCal_Click"/>
+            <!--Data table for expenses-->
+            <DataGrid x:Name="dataExpense" Grid.Row="1" Grid.Column="5" Grid.RowSpan="4" AutoGenerateColumns="False" Width="300" >
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Expense" Width ="150" Binding ="{Binding Path = Expense}" />
+                    <DataGridTextColumn Header="Amount" Width ="150" Binding="{Binding Path = Amount}" />
+                </DataGrid.Columns>
 
-        </DataGrid>
-        <!--Button to next page-->
-        <Button x:Name="btnNext" Grid.Column="5" Grid.Row="10" Content="Next" Margin="300,5,5,5" Click="btnNext_Click"/>
+            </DataGrid>
+            <!--Data table for userIncomeItems-->
+            <DataGrid x:Name="dataUserIncome" Grid.Row="6" Grid.Column="5" Grid.RowSpan="3" AutoGenerateColumns="False" Width="300" >
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Income Item" Width ="150" Binding ="{Binding Path = Expense}" />
+                    <DataGridTextColumn Header="Amount" Width ="150" Binding="{Binding Path = Amount}" />
+                </DataGrid.Columns>
 
-    </Grid>
+            </DataGrid>
+            <!--Button to next page-->
+            <Button x:Name="btnNext" Grid.Column="5" Grid.Row="10" Content="Next" Margin="300,5,5,5" Click="btnNext_Click"/>
+
+        </Grid>
+    </ScrollViewer>
 </Window>

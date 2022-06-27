@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:POETask3_2"
         mc:Ignorable="d"
-        Title="Results" Height="450" Width="800">
+        Title="Results" Height="450" Width="800"
+        >
+    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20"/>
@@ -35,10 +37,38 @@
         <!--Title-->
 
         <TextBlock x:Name="lblResult" Text="Results" Grid.Column="1" Grid.Row="1" FontSize="20" Margin="5" />
-        <TextBlock x:Name="lblHomeLoanAlert" Text="Message" Grid.Column="1" Grid.Row="2" FontSize="16" Margin="15" />
-        <TextBlock x:Name="lblExpenseAlert" Text="Message" Grid.Column="1" Grid.Row="3" FontSize="16" Margin="15" />
-        
+        <!--Monthly  home loan repayment is more than a third of the user’s gross monthly income-->
+        <TextBlock x:Name="lblHomeLoanAlert" Text="Message" Grid.Column="1"  Grid.ColumnSpan="2"  Grid.Row="2" FontSize="16" Margin="15" />
+        <!-- notify the user when the total expenses exceed 75% of their income-->
+        <TextBlock x:Name="lblExpenseAlert" Text="Message" Grid.Column="1"  Grid.ColumnSpan="2"  Grid.Row="3" FontSize="16" Margin="15" />
+
+        <!--  save up a specified amount by a certain date for a specified reason -->
+        <TextBlock x:Name="lblAddSpecialItem" Text="Would you like to add an item &#x0d;(an item you wish to save money for e.g. &#x0d; R100 000 for an honours degree over five years )"
+                   Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="4"  FontSize="16" Margin="15" />
+        <!-- add item button-->
+        <Button  x:Name="btnAddSpecialItem" Content="Add Item" FontSize="16" Grid.Column="1" Grid.Row="5" Margin="5"  Height="30" Width="150"/>
+        <!-- Data grid for expenses-->
+        <DataGrid x:Name="dataFinalExpenses" Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="2"  Grid.RowSpan="4" Margin="30,0,0,0" AutoGenerateColumns="False" Width="300" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Expense" Width ="150" Binding ="{Binding Path = Expense}" />
+                <DataGridTextColumn Header="Amount" Width ="150" Binding="{Binding Path = Amount}" />
+            </DataGrid.Columns>
+
+        </DataGrid>
+        <!-- Data grid for user income details-->
+        <DataGrid x:Name="dataUserIncomeDetails" Grid.Row="6" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="2"   Margin="0,0,0,0" AutoGenerateColumns="False" Width="300" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Expense" Width ="150" Binding ="{Binding Path = Expense}" />
+                <DataGridTextColumn Header="Amount" Width ="150" Binding="{Binding Path = Amount}" />
+            </DataGrid.Columns>
+
+        </DataGrid>
+        <!--exit and main menu button-->
+        <Button x:Name="btnBacktoMain" Content="Back" Grid.Column="3" Grid.Row="8" Margin ="5,5,10,5"/>
+        <Button x:Name="btnDone" Content="Exit" Grid.Column="4" Grid.Row="8" Margin ="20,5,5,5"/>
+
 
 
     </Grid>
+    </ScrollViewer>
 </Window>
