@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:POETask3_2"
         mc:Ignorable="d"
-        Title="Window1" Height="300" Width="400">
+        Title="Window1" Height="320" Width="400">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20"/>
@@ -45,14 +45,15 @@
         <TextBlock Text="Item Deposit" Grid.Column="1" Grid.Row="4" Margin="5" FontSize="14"/> 
         <TextBox x:Name="txtNewItemDeposit" Grid.Row="4" Grid.Column="2" Width="150" Margin="5"/>
         <!-- Interest Rate -->
-        <TextBlock Text="Interest rate " Grid.Column="1" Grid.Row="5" Margin="5" FontSize="14"/>
+        <TextBlock Text="Interest rate(Percentage)" Grid.Column="1" Grid.Row="5" Margin="5" FontSize="14"/>
         <TextBox x:Name="txtItemInterestRate" Grid.Row="5" Grid.Column="2" Width="150" Margin="5"/>
         <!-- Number Of Months -->
         <TextBlock Text="Time (Months) " Grid.Column="1" Grid.Row="6" Margin="5" FontSize="14"/>
         <TextBox x:Name="txtAmountMonths" Grid.Row="6" Grid.Column="2" Width="150" Margin="5"/>
         <!-- buttons -->
-        <Button x:Name="btnNewItemCalculate" Grid.Column="2" Grid.Row="8" Margin="5" Content="Calculate" />
+        <Button x:Name="btnNewItemCalculate" Grid.Column="2" Grid.Row="8" Margin="5" Content="Calculate" Click="btnNewItemCalculate_Click" />
+        <Button x:Name="btnAddItemToList" Grid.Column="2" Grid.Row="9" Margin="5" Content="Done" Click="btnAddItemToList_Click"  />
         <!-- Error lablel -->
-        <TextBlock Text="Error" Grid.Column="1" Grid.Row="8" Margin="5" HorizontalAlignment="Center" FontSize="16"  Foreground="Red"/>
+        <TextBlock x:Name="lblError" Text="Error" Grid.Column="1" Grid.Row="8" Margin="5" HorizontalAlignment="Center" FontSize="16"  Foreground="Red"/>
     </Grid>
 </Window>

@@ -19,9 +19,52 @@ namespace POETask3_2
     /// </summary>
     public partial class AddSpecialItem : Window
     {
+        public static double SpecialItemMonthly;
         public AddSpecialItem()
         {
             InitializeComponent();
+            lblError.Visibility = Visibility.Collapsed;
+            btnAddItemToList.Visibility = Visibility.Collapsed;
+        }
+        bool isValid;
+        double FullAmount;
+        double Deposit;
+        double InterestRate;
+        double time;
+        private void btnNewItemCalculate_Click(object sender, RoutedEventArgs e)
+        {
+            lblError.Visibility = Visibility.Collapsed;
+            
+            try
+            {
+                 FullAmount = double.Parse(txtNewItemAmount.Text);
+                 Deposit = double.Parse(txtNewItemDeposit.Text);
+                 InterestRate = double.Parse(txtItemInterestRate.Text);
+                 time = double.Parse(txtAmountMonths.Text);
+                
+                isValid = true;
+            }
+            catch (Exception)
+            {
+                isValid = false;
+                lblError.Visibility = Visibility.Visible;
+            }
+
+            if (isValid == true)
+            {
+
+                lblError.Visibility = Visibility.Collapsed;
+                btnNewItemCalculate.Visibility = Visibility.Collapsed;
+                btnAddItemToList.Visibility = Visibility.Visible;
+                HomeLoanCalculation calcObj = new HomeLoanCalculation();
+                SpecialItemMonthly = calcObj.calculateCost(FullAmount, Deposit, InterestRate, time);
+
+            }
+        }
+
+        private void btnAddItemToList_Click(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
         }
     }
 }
