@@ -89,7 +89,12 @@ namespace POETask3_2
                     Amount = Double.Parse(txtOther.Text)
 
                 });
-
+                TotalExpenses =
+                  Double.Parse(txtGrocery.Text) +
+                  Double.Parse(txtWater.Text) +
+                  Double.Parse(txtTravel.Text) +
+                  Double.Parse(txtCellPhone.Text) +
+                  Double.Parse(txtOther.Text);
                 //the next button will not appear until the user enters all values correctly
                 btnNext.Visibility = Visibility.Visible;
 
@@ -99,12 +104,7 @@ namespace POETask3_2
                 btnNext.Visibility = Visibility.Collapsed;
                 lblError.Visibility = Visibility.Visible;
             }
-            TotalExpenses =
-                    Double.Parse(txtGrocery.Text) +
-                    Double.Parse(txtWater.Text) +
-                    Double.Parse(txtTravel.Text) +
-                    Double.Parse(txtCellPhone.Text) +
-                    Double.Parse(txtOther.Text);
+          
 
             return Expenses;
 

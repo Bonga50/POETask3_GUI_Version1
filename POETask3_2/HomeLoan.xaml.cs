@@ -14,6 +14,7 @@ namespace POETask3_2
         int choice;
         //will hold value of home loan or renting
         public static double homeAmount;
+        bool isvalid;
         public HomeLoan()
         {
             InitializeComponent();
@@ -86,16 +87,19 @@ namespace POETask3_2
 
         private void btnHomeloanCalc_Click(object sender, RoutedEventArgs e)
         {
+            //error handling
+            lblError.Visibility = Visibility.Collapsed;
             if (choice == 0)
             {
                 try
                 {
                     homeAmount = double.Parse(txtRentalAmount.Text);
+                    isvalid = true;
 
                 }
                 catch (Exception)
                 {
-
+                    isvalid = false;
                     lblError.Visibility = Visibility.Visible;
                 }
                 
@@ -111,27 +115,34 @@ namespace POETask3_2
                     double homeRepayment = double.Parse(txtHomeTIme.Text);
                     HomeLoanCalculation HomeloancalcOBJ = new HomeLoanCalculation();
                     homeAmount = HomeloancalcOBJ.calculateCost(HomePurchasePrice, homeDeposit, homeInterestRate, homeRepayment);
+                    isvalid = true;
                 }
                 catch (Exception)
                 {
-
+                    isvalid = false;
                     lblError.Visibility = Visibility.Visible;
                 }
 
 
             }
-
-            MainWindow.SendingList.Add(new Expensedata
+            //adding item to the list 
+            if (isvalid == true)
             {
-                Expense = "Home",
-                Amount = homeAmount
-            });
+                MainWindow.SendingList.Add(new Expensedata
+                {
+                    Expense = "Home",
+                    Amount = homeAmount
+                });
+                HomeLoanPlusExp.ItemsSource = MainWindow.SendingList;
+                btnHomeloanCalc.Visibility = Visibility.Collapsed;
+                cmbBuyHome.Visibility = Visibility.Collapsed;
+                lblBuyRentQuestion.Text = "            Calculated   ";
+                btnNext3.Visibility = Visibility.Visible;
 
-            HomeLoanPlusExp.ItemsSource = MainWindow.SendingList;
-            btnHomeloanCalc.Visibility = Visibility.Collapsed;
-            cmbBuyHome.Visibility = Visibility.Collapsed;
-            lblBuyRentQuestion.Text = "            Calculated   ";
-            btnNext3.Visibility = Visibility.Visible;
+            }
+           
+
+            
         }
 
         private void BackToMain_Click(object sender, RoutedEventArgs e)

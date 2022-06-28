@@ -14,6 +14,14 @@ namespace POETask3_2
         public static Rentalwindow instance;
         int Carchoice;
         public static double CarAmount;
+        bool isValid;
+
+        //variables for car
+        double purchasePrice;
+        double depositPrecntage;
+        double interestRate;
+        double numOfMonths;
+        double Answer;
         public Rentalwindow()
         {
             InitializeComponent();
@@ -93,47 +101,75 @@ namespace POETask3_2
 
         private void btnCalculate_Click(object sender, RoutedEventArgs e)
         {
+            lblError.Visibility = Visibility.Collapsed;
             //This will check if car  item already exists in the list 
-            bool CaralreadyExists = MainWindow.SendingList.Any(x => x.Expense.Equals("Car"));
+            //bool CaralreadyExists = MainWindow.SendingList.Any(x => x.Expense.Equals("Car"));
+
+            //Error handleing 
             if (Carchoice == 0)
             {
-                double purchasePrice = double.Parse(txtCarPurchase.Text);
-                double depositPrecntage = double.Parse(txtCardeposit.Text);
-                double interestRate = double.Parse(txtCarInterest.Text);
-                double numOfMonths = 60;
-                double Answer = CarObj.calculateCost(purchasePrice, depositPrecntage, interestRate, numOfMonths);
-                //add car to list of expenses.
                 try
                 {
-                    MainWindow.SendingList.Add(new Expensedata()
-                    {
+                    purchasePrice = double.Parse(txtCarPurchase.Text);
+                    depositPrecntage = double.Parse(txtCardeposit.Text);
+                    interestRate = double.Parse(txtCarInterest.Text);
+                    numOfMonths = 60;
+                    Answer = CarObj.calculateCost(purchasePrice, depositPrecntage, interestRate, numOfMonths)+ double.Parse(txtCarInsuranse.Text);
 
-                        Expense = "Car",
-                        Amount = Answer + double.Parse(txtCarInsuranse.Text)
+                    isValid = true;
 
-                    });
                 }
                 catch (System.Exception)
                 {
 
                     lblError.Visibility = Visibility.Visible;
+                    isValid = false;
+
+
+
                 }
-              
 
-            } else if (Carchoice ==1) {
-                MainWindow.SendingList.Add(new Expensedata()
-                {
-
-                    Expense = "Car",
-                    Amount = 0
-
-                }) ;
             }
-            cmbCar.Visibility = Visibility.Collapsed;
-            lblBuyCar.Text = "               Calculated   ";
-            btnNext2.Visibility = Visibility.Visible;
-            btnCalculate.Visibility = Visibility.Collapsed;
-            CarPlusExpenses.ItemsSource = MainWindow.SendingList;
+            else if (Carchoice == 1)
+            {
+                Answer = 0;
+                isValid = true;
+            }
+
+
+            //add car to list of expenses.
+            //this will not execute as long as errors are detectable
+            if (isValid == true) {
+                if (Carchoice == 0)
+                {
+                    MainWindow.SendingList.Add(new Expensedata()
+                    {
+
+                        Expense = "Car",
+                        Amount = Answer
+
+                    });
+                   
+
+
+
+                } else if (Carchoice == 1) {
+                    MainWindow.SendingList.Add(new Expensedata()
+                    {
+
+                        Expense = "Car",
+                        Amount = 0
+
+                    });
+                }
+
+
+                cmbCar.Visibility = Visibility.Collapsed;
+                lblBuyCar.Text = "               Calculated   ";
+                btnNext2.Visibility = Visibility.Visible;
+                btnCalculate.Visibility = Visibility.Collapsed;
+                CarPlusExpenses.ItemsSource = MainWindow.SendingList;
+            }
 
         }
 
