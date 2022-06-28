@@ -47,6 +47,7 @@ namespace POETask3_2
             dataFinalExpenses.ItemsSource = MainWindow.SendingList.OrderByDescending(x => x.Amount);
             //expenses alert 
             lblExpenseAlert.Text = OBJ1(finalExpense, MainWindow.UserIncomeAmount,precentageOfIncome);
+            dataUserIncomeDetails.ItemsSource = MainWindow.SendingUserIncome;
         }
 
         private String HomeLoanAlert(double UserIncome, double HomeLoan)
@@ -62,7 +63,28 @@ namespace POETask3_2
             return message;
         }
 
+        private void btnAddSpecialItem_Click(object sender, RoutedEventArgs e)
+        {
+            AddSpecialItem SpecialObj = new AddSpecialItem();
+            SpecialObj.Show();
+        }
 
-        
+        private void btnDone_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnBacktoMain_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult result = MessageBox.Show("Are you sure, (This will discard all data and you will start again" +
+              ")", "Confirmation", MessageBoxButton.YesNo);
+            if (result == MessageBoxResult.Yes)
+            {
+
+                MainWindow mainWindow = new MainWindow();
+                this.Visibility = Visibility.Collapsed;
+                mainWindow.Visibility = Visibility.Visible;
+            }
+        }
     }
 }

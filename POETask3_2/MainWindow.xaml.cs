@@ -20,7 +20,7 @@ namespace POETask3_2
         public static double Tax;
         //[3] (Kumar, n.d.)
         public static ObservableCollection<Expensedata> SendingList;
-
+        public static ObservableCollection<Expensedata> SendingUserIncome;
         Rentalwindow NextObj = new Rentalwindow();
         public MainWindow()
         {
@@ -40,7 +40,7 @@ namespace POETask3_2
             lblError.Visibility = Visibility.Collapsed;
 
             SendingList = LoadExpenseData();
-
+            SendingUserIncome = LoadUserIncomeData();
             //[2](Sort list in descending order in C# | Techie Delight, 2022)
             //the below method sorts the list in decending order using Linq
             dataUserIncome.ItemsSource = LoadUserIncomeData().OrderByDescending(x => x.Amount);
@@ -158,6 +158,11 @@ namespace POETask3_2
             this.Visibility = Visibility.Collapsed;
 
 
+        }
+
+        private void btnExit_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 
