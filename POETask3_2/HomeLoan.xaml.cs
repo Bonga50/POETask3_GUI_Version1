@@ -9,10 +9,11 @@ namespace POETask3_2
     /// </summary>
     public partial class HomeLoan : Window
     {
+        //from this window we get Monthly home loan repayment or monthly rent 
         //buy or rent choice
         int choice;
         //will hold value of home loan or renting
-        double homeAmount;
+        public static double homeAmount;
         public HomeLoan()
         {
             InitializeComponent();
@@ -144,6 +145,13 @@ namespace POETask3_2
                 this.Hide();
                 mainWindow.Show();
             }
+        }
+
+        private void btnNext3_Click(object sender, RoutedEventArgs e)
+        {
+            FinalDeductionsWindow FinalObj = new FinalDeductionsWindow();
+            this.Hide();
+            FinalObj.Show();
         }
     }
 }

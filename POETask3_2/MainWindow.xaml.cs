@@ -10,11 +10,14 @@ namespace POETask3_2
     /// </summary>
     public partial class MainWindow : Window
     {
+        //From this window we get Total expenses , tax and total
         //[4](TACV - The Amazing Code-Verse, 2021)
         //instance for main window to use main window properties in other windows
         public static MainWindow instance;
 
-        public static double Groceries;
+        public static double TotalExpenses;
+        public static double UserIncomeAmount;
+        public static double Tax;
         //[3] (Kumar, n.d.)
         public static ObservableCollection<Expensedata> SendingList;
 
@@ -42,6 +45,8 @@ namespace POETask3_2
             //the below method sorts the list in decending order using Linq
             dataUserIncome.ItemsSource = LoadUserIncomeData().OrderByDescending(x => x.Amount);
             dataExpense.ItemsSource = LoadExpenseData().OrderByDescending(x => x.Amount);
+
+
 
         }
         //this method loads the list of expenses
@@ -94,6 +99,12 @@ namespace POETask3_2
                 btnNext.Visibility = Visibility.Collapsed;
                 lblError.Visibility = Visibility.Visible;
             }
+            TotalExpenses =
+                    Double.Parse(txtGrocery.Text) +
+                    Double.Parse(txtWater.Text) +
+                    Double.Parse(txtTravel.Text) +
+                    Double.Parse(txtCellPhone.Text) +
+                    Double.Parse(txtOther.Text);
 
             return Expenses;
 
@@ -120,14 +131,13 @@ namespace POETask3_2
                 UserIncome.Add(new Expensedata()
                 {
                     Expense = "Total Expenses",
-                    Amount =
-                    Double.Parse(txtGrocery.Text) +
-                    Double.Parse(txtWater.Text) +
-                    Double.Parse(txtTravel.Text) +
-                    Double.Parse(txtCellPhone.Text) +
-                    Double.Parse(txtOther.Text)
+                    Amount = TotalExpenses
+
 
                 });
+
+                
+
 
 
             }
@@ -136,6 +146,8 @@ namespace POETask3_2
                 btnNext.Visibility = Visibility.Collapsed;
                 lblError.Visibility = Visibility.Visible;
             }
+            UserIncomeAmount = double.Parse(txtGross.Text);
+            Tax = double.Parse(txtTax.Text);
             return UserIncome;
         }
 

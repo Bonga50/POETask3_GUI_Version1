@@ -70,7 +70,7 @@
 
             </DataGrid>
             <!--next and back button -->
-            <Button x:Name="btnNext3" Grid.Column="4" Grid.Row="9" Content="Next" Margin="10,90,0,0" />
+            <Button x:Name="btnNext3" Grid.Column="4" Grid.Row="9" Content="Next" Margin="10,90,0,0" Click="btnNext3_Click" />
             <Button x:Name="btnBackToMain" Grid.Column="3" Grid.Row="9" Content="Back" Margin="5,90,10,0" Height="20" VerticalAlignment="Top" Click="BackToMain_Click" />
         </Grid>
     </ScrollViewer>

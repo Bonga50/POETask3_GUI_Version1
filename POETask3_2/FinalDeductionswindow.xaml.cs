@@ -17,11 +17,25 @@ namespace POETask3_2
     /// <summary>
     /// Interaction logic for Window1.xaml
     /// </summary>
-    public partial class Window1 : Window
+    public partial class FinalDeductionsWindow : Window
     {
-        public Window1()
+        public FinalDeductionsWindow()
         {
             InitializeComponent();
+            lblHomeLoanAlert.Text = HomeLoanAlert(MainWindow.UserIncomeAmount,HomeLoan.homeAmount);
+            dataFinalExpenses.ItemsSource = MainWindow.SendingList.OrderByDescending(x => x.Amount);
+        }
+
+        private String HomeLoanAlert(double UserIncome,double HomeLoan) {
+            double UserincomePercentage = (UserIncome * 75) / 100;
+            String message;
+            if (HomeLoan > UserincomePercentage)
+            {
+                message = "A homeloan is unlikely, 75% of your income is \n " + UserincomePercentage + " and your monthly home loan repayment will be \n" + HomeLoan + "Sorry, Sed life" ;
+            }
+            else { message = "A homeloan is likely, 75% of your income is \n " + UserincomePercentage + " and your monthly home loan repayment will be \n" + HomeLoan + " Nice Job"; }
+
+            return message;
         }
     }
 }

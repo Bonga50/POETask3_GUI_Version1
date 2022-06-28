@@ -9,9 +9,11 @@ namespace POETask3_2
     /// </summary>
     public partial class Rentalwindow : Window
     {
+        //This window will get the Car amount 
         BuyCar CarObj = new BuyCar();
         public static Rentalwindow instance;
         int Carchoice;
+        public static double CarAmount;
         public Rentalwindow()
         {
             InitializeComponent();
