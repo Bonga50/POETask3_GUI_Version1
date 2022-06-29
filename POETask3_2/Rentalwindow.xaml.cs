@@ -114,7 +114,7 @@ namespace POETask3_2
                     depositPrecntage = double.Parse(txtCardeposit.Text);
                     interestRate = double.Parse(txtCarInterest.Text);
                     numOfMonths = 60;
-                    Answer = CarObj.calculateCost(purchasePrice, depositPrecntage, interestRate, numOfMonths)+ double.Parse(txtCarInsuranse.Text);
+                    Answer = CarObj.calculateCost(purchasePrice, depositPrecntage, interestRate, numOfMonths) + double.Parse(txtCarInsuranse.Text);
 
                     isValid = true;
 
@@ -124,8 +124,6 @@ namespace POETask3_2
 
                     lblError.Visibility = Visibility.Visible;
                     isValid = false;
-
-
 
                 }
 

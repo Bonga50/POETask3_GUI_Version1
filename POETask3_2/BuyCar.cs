@@ -8,6 +8,7 @@ namespace POETask3_2
 {
     class BuyCar : Expense
     {
+        //calculates hire purchase fro car, This is a duplicate method and can be removed.
         public override double calculateCost(double PurchasePrice, double CarDeposit,double Interest,double Time)
         {
            
