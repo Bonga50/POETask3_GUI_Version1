@@ -20,6 +20,7 @@ namespace POETask3_2
     public partial class AddSpecialItem : Window
     {
         public static double SpecialItemMonthly;
+        public static String SpecialItemName;
         public AddSpecialItem()
         {
             InitializeComponent();
@@ -59,12 +60,34 @@ namespace POETask3_2
                 HomeLoanCalculation calcObj = new HomeLoanCalculation();
                 SpecialItemMonthly = calcObj.calculateCost(FullAmount, Deposit, InterestRate, time);
 
+                SpecialItemName = txtNewItemName.Text;
+
+              
+
+                
             }
         }
 
         private void btnAddItemToList_Click(object sender, RoutedEventArgs e)
         {
+            MainWindow.SendingList.Add(new Expensedata
+            {
+                Expense = SpecialItemName,
+                Amount = SpecialItemMonthly
+
+            });
+
+            FinalDeductionsWindow FinObj = new FinalDeductionsWindow();
             this.Hide();
+            FinObj.Show();
+        }
+
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            FinalDeductionsWindow FinObj = new FinalDeductionsWindow();
+            this.Hide();
+            FinObj.Show();
+
         }
     }
 }

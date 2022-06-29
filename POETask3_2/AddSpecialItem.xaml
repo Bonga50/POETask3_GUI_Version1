@@ -42,7 +42,7 @@
         <TextBlock Text="Item Full Amount " Grid.Column="1" Grid.Row="3" Margin="5" FontSize="14"/>
         <TextBox x:Name="txtNewItemAmount" Grid.Row="3" Grid.Column="2" Width="150" Margin="5"/>
         <!-- Deposit -->
-        <TextBlock Text="Item Deposit" Grid.Column="1" Grid.Row="4" Margin="5" FontSize="14"/> 
+        <TextBlock Text="Item Deposit" Grid.Column="1" Grid.Row="4" Margin="5" FontSize="14"/>
         <TextBox x:Name="txtNewItemDeposit" Grid.Row="4" Grid.Column="2" Width="150" Margin="5"/>
         <!-- Interest Rate -->
         <TextBlock Text="Interest rate(Percentage)" Grid.Column="1" Grid.Row="5" Margin="5" FontSize="14"/>
@@ -53,6 +53,7 @@
         <!-- buttons -->
         <Button x:Name="btnNewItemCalculate" Grid.Column="2" Grid.Row="8" Margin="5" Content="Calculate" Click="btnNewItemCalculate_Click" />
         <Button x:Name="btnAddItemToList" Grid.Column="2" Grid.Row="9" Margin="5" Content="Done" Click="btnAddItemToList_Click"  />
+        <Button x:Name="btnCancel" Grid.Column="1" Grid.Row="9" Margin="5" Content="Cancel" Click="btnCancel_Click"/>
         <!-- Error lablel -->
         <TextBlock x:Name="lblError" Text="Error" Grid.Column="1" Grid.Row="8" Margin="5" HorizontalAlignment="Center" FontSize="16"  Foreground="Red"/>
     </Grid>
