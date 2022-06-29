@@ -10,9 +10,9 @@ namespace POETask3_2
     {
         public override double calculateCost(double PurchasePrice, double CarDeposit,double Interest,double Time)
         {
-            double nDeposit= (PurchasePrice * CarDeposit) / 100;
+           
             
-            double nPurchasePrice = PurchasePrice - nDeposit;
+            double nPurchasePrice = PurchasePrice - CarDeposit;
             
             double nInterest = Interest / 100;
             

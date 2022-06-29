@@ -8,6 +8,7 @@ namespace POETask3_2
 {
     abstract class Expense
     {
+        //Abstact class for general calculation
         //P = Purchase price 
         //D = Deposit
         //I = intrerst

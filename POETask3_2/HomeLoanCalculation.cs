@@ -8,12 +8,13 @@ namespace POETask3_2
 {
     class HomeLoanCalculation : Expense
     {
+        //This will calculate HIRE PURCHASE for the general items such as the special items and Buy home
         public override double calculateCost(double PurchasePrice, double homeDeposit, double InterstRate, double Time)
         {
 
-            double nDeposit = (PurchasePrice * homeDeposit) / 100;
+            
 
-            double nPurchasePrice = PurchasePrice - nDeposit;
+            double nPurchasePrice = PurchasePrice - homeDeposit;
 
             double nInterest = InterstRate / 100;
 

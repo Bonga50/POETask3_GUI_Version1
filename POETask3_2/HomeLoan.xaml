@@ -47,7 +47,7 @@
             <TextBlock x:Name="lblPurchasePrice" Text="Purchase price" Grid.Column="1" Grid.Row="3" Margin="5" FontSize="16" />
             <TextBox x:Name="txtHomePurchasePrice" Grid.Column="2" Grid.Row="3" Width="150" Margin="5"/>
             <!--Deposit percentage-->
-            <TextBlock x:Name="lblDeposit" Text="Deposit(Percentage)" Grid.Column="1" Grid.Row="4" Margin="5" FontSize="16" />
+            <TextBlock x:Name="lblDeposit" Text="Deposit" Grid.Column="1" Grid.Row="4" Margin="5" FontSize="16" />
             <TextBox x:Name="txtHomedeposit" Grid.Column="2" Grid.Row="4" Width="150" Margin="5"/>
             <!--Interest rate-->
             <TextBlock x:Name="lblInterest" Text="Interest rate(Percentage)" Grid.Column="1" Grid.Row="5" Margin="5" FontSize="16" />

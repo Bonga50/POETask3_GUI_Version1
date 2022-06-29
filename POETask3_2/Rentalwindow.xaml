@@ -51,7 +51,7 @@
             <TextBlock x:Name="lblPurchase" Text="Car Purchase Price" Grid.Column="1" Grid.Row="4" FontSize="16" Margin="5" />
             <TextBox x:Name="txtCarPurchase" Grid.Row="4" Grid.Column="2" Margin="5"/>
             <!-- Car total deposit -->
-            <TextBlock x:Name="lbldeposit" Text="Deposit(Percentage)" Grid.Column="1" Grid.Row="5" FontSize="16" Margin="5" />
+            <TextBlock x:Name="lbldeposit" Text="Deposit" Grid.Column="1" Grid.Row="5" FontSize="16" Margin="5" />
             <TextBox x:Name="txtCardeposit" Grid.Row="5" Grid.Column="2" Margin="5"/>
             <!-- Car Interest rate (percentage) -->
             <TextBlock x:Name="lblInterest" Text="Interest rate (Percetage)" Grid.Column="1" Grid.Row="6" FontSize="16" Margin="5" />
