@@ -136,7 +136,8 @@ namespace POETask3_2
 
                 });
 
-                
+                UserIncomeAmount = double.Parse(txtGross.Text);
+                Tax = double.Parse(txtTax.Text);
 
 
 
@@ -146,8 +147,7 @@ namespace POETask3_2
                 btnNext.Visibility = Visibility.Collapsed;
                 lblError.Visibility = Visibility.Visible;
             }
-            UserIncomeAmount = double.Parse(txtGross.Text);
-            Tax = double.Parse(txtTax.Text);
+           
             return UserIncome;
         }
 
