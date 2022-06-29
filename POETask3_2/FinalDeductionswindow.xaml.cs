@@ -28,8 +28,6 @@ namespace POETask3_2
             InitializeComponent();
             //populate list          
             userIncomeDetails();
-
-            MessageBox.Show(FinalUserIncomeDetails.Count().ToString());
             //homeloan alert
             lblHomeLoanAlert.Text = HomeLoanAlert(MainWindow.UserIncomeAmount, HomeLoan.homeAmount);
             dataFinalExpenses.ItemsSource = MainWindow.SendingList.OrderByDescending(x => x.Amount);
@@ -105,6 +103,7 @@ namespace POETask3_2
                 });
             }
         }
+
         //delegate method for altering the user if the expenses are to high
         public static  String RepaymentStatus(double finalExpense, double fulluserIncome, double MonthlyGrossPrecentage)
         {
