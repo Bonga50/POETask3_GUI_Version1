@@ -189,4 +189,27 @@ namespace POETask3_2
  * [4] TACV - The Amazing Code-Verse. (2021, February 28). BEST Way to SEND DATA between Multiple Forms | C# Windows Form [Video].
  * YouTube. https://www.youtube.com/watch?v=t-4caAZKLJw
  * 
- */
+ * //References 
+/*[5] W3schools.com. 2022. C# Abstraction. [online] Available at: <https://www.w3schools.com/cs/cs_abstract.php> 
+ * [Accessed 11 May 2022].
+ 
+ [6]Docs.microsoft.com. 2022. Double.Parse Method (System). [online] Available at:
+<https://docs.microsoft.com/en-us/dotnet/api/system.double.parse?view=net-6.0>
+[Accessed 11 May 2022].
+ [7] Sars.gov.za. 2022. [online] Available at: 
+<https://www.sars.gov.za/wp-content/uploads/Ops/Guides/PAYE-GEN-01-G01-Guide-for-Employers-in-respect-of-Tax-Deduction-Tables-External-Guide.pdf> 
+[Accessed 12 May 2022].
+ [8] W3schools.com. 2022. C# Arrays. [online] Available at: 
+<https://www.w3schools.com/cs/cs_arrays.php>
+[Accessed 12 May 2022].
+ 
+ [9] w3resource. 2022. C# - Read and Print elements of an array - w3resource. [online] Available at: 
+<https://www.w3resource.com/csharp-exercises/array/csharp-array-exercise-1.php> 
+[Accessed 12 May 2022].
+[10]Tutorialspoint.com. 2022. Sort KeyValuePairs in C#. [online] Available at: 
+<https://www.tutorialspoint.com/sort-keyvaluepairs-in-chash>
+[Accessed 30 May 2022].
+ [11]GeeksforGeeks. 2022. C# | Delegates - GeeksforGeeks. [online] Available at:
+<https://www.geeksforgeeks.org/c-sharp-delegates/>
+[Accessed 23 May 2022].*/
+
